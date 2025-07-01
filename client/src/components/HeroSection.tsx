@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { User, Code2, Database, Cloud } from "lucide-react";
 import ParticleSystem from "./ParticleSystem";
+import profilePic from "../assets/profile.jpeg";
 
 export default function HeroSection() {
   const handleGetInTouch = () => {
@@ -43,9 +44,12 @@ export default function HeroSection() {
             <h2 className="text-xl md:text-2xl text-blue-200 mb-6 font-medium">
               Python Backend Developer
             </h2>
-            <p className="text-lg md:text-xl text-blue-100 mb-8 leading-relaxed">
+            {/* <p className="text-lg md:text-xl text-blue-100 mb-8 leading-relaxed">
               Results-driven Software Developer with 3+ years of experience in Python, Django and FastAPI development, 
               passionate about building scalable and innovative solutions through microservices and cloud technologies.
+            </p> */}
+            <p className="text-lg md:text-xl text-blue-100 mb-8 leading-relaxed">
+              As a Python developer with 3+ years of hands-on experience, I thrive at the intersection of creativity and problem-solving. My journey has taken me from building enterprise-grade APIs with FastAPI and Django to designing intuitive frontends with React—always with a focus on performance, security, and scalability. Whether it’s optimizing PostgreSQL queries for lightning-fast reporting or architecting microservices that handle real-world complexity, I love turning technical challenges into seamless user experiences. Cloud-native development (AWS) and clean, maintainable code are my trademarks, but what really drives me is collaborating with teams to build tools that make an impact.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
@@ -65,37 +69,22 @@ export default function HeroSection() {
           </div>
           <div className="flex justify-center lg:justify-end slide-in-right">
             <div className="relative">
-              {/* 3D Profile Container */}
-              <div className="w-80 h-80 bg-white/10 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-white/20 tilt-3d group">
-                <div className="text-center relative">
-                  {/* Animated rings around profile */}
-                  <div className="absolute inset-0 rounded-full border-2 border-white/30 animate-pulse"></div>
-                  <div className="absolute inset-4 rounded-full border border-blue-300/40 animate-ping"></div>
-                  
-                  <User className="w-24 h-24 text-white/60 mx-auto mb-4 transition-transform duration-300 group-hover:scale-110" />
-                  <p className="text-white/80 text-sm">Professional Photo</p>
-                  
-                  {/* Tech stack badges floating around */}
-                  <div className="absolute -top-6 -left-6 bg-blue-500/20 backdrop-blur-sm rounded-full px-3 py-1 text-xs border border-blue-300/30 floating-animation">
-                    Python
-                  </div>
-                  <div className="absolute -top-4 -right-8 bg-purple-500/20 backdrop-blur-sm rounded-full px-3 py-1 text-xs border border-purple-300/30 floating-animation">
-                    Django
-                  </div>
-                  <div className="absolute -bottom-6 -left-4 bg-green-500/20 backdrop-blur-sm rounded-full px-3 py-1 text-xs border border-green-300/30 floating-animation">
-                    FastAPI
-                  </div>
-                  <div className="absolute -bottom-4 -right-6 bg-orange-500/20 backdrop-blur-sm rounded-full px-3 py-1 text-xs border border-orange-300/30 floating-animation">
-                    AWS
-                  </div>
-                </div>
-              </div>
-              
-              {/* Glowing orbs */}
-              <div className="absolute -top-4 -right-4 w-8 h-8 bg-blue-400/50 rounded-full blur-sm animate-pulse"></div>
-              <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-purple-400/50 rounded-full blur-sm animate-pulse"></div>
-            </div>
-          </div>
+              <div className="bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/20 tilt-3d group overflow-hidden">
+      <div className="text-center relative">
+        <img
+          src={profilePic}
+          alt="AI Professional Photo"
+          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+          style={{ minWidth: '256px', minHeight: '256px' }} // Adjust size as needed
+        />
+      </div>
+    </div>
+    
+    {/* Glowing orbs */}
+    <div className="absolute -top-4 -right-4 w-8 h-8 bg-blue-400/50 rounded-full blur-sm animate-pulse"></div>
+    <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-purple-400/50 rounded-full blur-sm animate-pulse"></div>
+  </div>
+</div>
         </div>
       </div>
     </section>
