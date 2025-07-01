@@ -1,9 +1,12 @@
-// server/db.ts
-
-import { neonConfig, Pool } from "@neondatabase/serverless";
-import ws from "ws";
+import { Pool, neonConfig } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-serverless";
-import { schema_exports } from "../shared/schema"; // or correct relative path
+import ws from "ws";
+
+// ✅ Import individual schema exports
+import {
+  users,
+  contactSubmissions,
+} from "../shared/schema"; // ✅ Adjust the path if needed
 
 neonConfig.webSocketConstructor = ws;
 
@@ -13,7 +16,9 @@ if (!process.env.DATABASE_URL) {
 
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 
-// ✅ Corrected drizzle init syntax
-const db = drizzle(pool, { schema: schema_exports });
+// ✅ Use the schema object explicitly
+const db = drizzle(pool, {
+  schema: { users, contactSubmissions },
+});
 
 export { db };
