@@ -1,17 +1,15 @@
-import { Pool, neonConfig } from "@neondatabase/serverless";
-import { drizzle } from "drizzle-orm/neon-serverless";
-import ws from "ws";
+// db.ts
+import Database from 'better-sqlite3';
+import { drizzle } from 'drizzle-orm/better-sqlite3';
+import * as schema from '@shared/schema';
+import dotenv from 'dotenv';
 
-// ✅ Import the schema properly
-import * as schema from "../shared/schema";
+dotenv.config();
 
-neonConfig.webSocketConstructor = ws;
+const dbPath = process.env.DATABASE_URL || 'file:./dev.db';
+const sqlite = new Database(dbPath.replace('file:', ''));
 
-if (!process.env.DATABASE_URL) {
-  throw new Error("DATABASE_URL must be set. Did you forget to provision a database?");
-}
+// Wrap the SQLite database with Drizzle
+const db = drizzle(sqlite, { schema });
 
-const pool = new Pool({ connectionString: process.env.DATABASE_URL });
-
-// ✅ Use object shorthand
-export const db = drizzle(pool, { schema });
+export default db;
